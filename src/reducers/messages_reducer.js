@@ -1,0 +1,23 @@
+
+import { FETCH_MESSAGES, MESSAGE_POSTED, GROUP_SELECTED } from '../actions';
+
+const messagesReducer = (state=null, action ) => {
+  switch (action.type) {
+    case FETCH_MESSAGES: {
+      return action.payload.messages;
+    }
+    case MESSAGE_POSTED: {
+      const copiedState = state.slice(0);
+      copiedState.push(action.payload);
+      return copiedState;
+    }
+    case GROUP_SELECTED: {
+      return [];
+    }
+
+    default:
+    return state;
+  }
+}
+
+export default messagesReducer
